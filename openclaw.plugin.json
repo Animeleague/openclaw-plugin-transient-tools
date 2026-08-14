@@ -1,0 +1,79 @@
+{
+  "id": "transient-tools",
+  "name": "Transient Tool Context",
+  "description": "Keeps recent tool interactions in bounded process memory and out of persistent OpenClaw session transcripts.",
+  "activation": {
+    "onStartup": true
+  },
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "enabled": {
+        "type": "boolean",
+        "default": true
+      },
+      "maxInteractions": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 2000,
+        "default": 200
+      },
+      "maxTransientTokens": {
+        "type": "integer",
+        "minimum": 1000,
+        "maximum": 200000,
+        "default": 40000
+      },
+      "maxInteractionTokens": {
+        "type": "integer",
+        "minimum": 100,
+        "maximum": 20000,
+        "default": 2000
+      },
+      "persistToolHistory": {
+        "type": "boolean",
+        "default": false
+      },
+      "dedupeAliases": {
+        "type": "boolean",
+        "default": true
+      },
+      "injectSameModel": {
+        "type": "boolean",
+        "default": false
+      }
+    }
+  },
+  "configUiHints": {
+    "maxInteractions": {
+      "label": "Maximum retained tool interactions",
+      "help": "Process-memory ring size. Oldest interactions are discarded first. Default: 200."
+    },
+    "maxTransientTokens": {
+      "label": "Maximum transient tool tokens per turn",
+      "help": "Newest retained interactions are injected until this approximate token budget is reached. Default: 40000."
+    },
+    "maxInteractionTokens": {
+      "label": "Maximum tokens per tool interaction",
+      "help": "A single carried-forward tool interaction is truncated to this approximate token budget. The live/current tool result is not changed. Default: 2000."
+    },
+    "persistToolHistory": {
+      "label": "Persist tool history",
+      "help": "When false, tool-call/result transcript rows are blocked or stripped from persistent session history. Default: false."
+    },
+    "dedupeAliases": {
+      "label": "Deduplicate compatibility aliases",
+      "help": "Before any remaining message is written, removes input when identical to arguments and tool-result content when identical to text. Default: true."
+    },
+    "injectSameModel": {
+      "label": "Inject same-model tool history",
+      "help": "Default false avoids duplicating tool history already held by a warm model thread. Enable for stateless/reconstructed providers that need same-model carry-forward."
+    }
+  },
+  "contracts": {
+    "tools": [
+      "transient_tools_dump"
+    ]
+  }
+}
