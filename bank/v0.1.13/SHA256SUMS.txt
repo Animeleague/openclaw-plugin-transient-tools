@@ -1,0 +1,2 @@
+a832f648e3a96d0ea08f4108353084dd709e4e957cc0ac86f535951bb907efac  openclaw-plugin-transient-tools-0.1.13-source.zip
+f3283ab785562f499c055fa0b133c87060aff88ac3c8fd2cfd3d38127b6cf077  openclaw-plugin-transient-tools-0.1.13.tgz
