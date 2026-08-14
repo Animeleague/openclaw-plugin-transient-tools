@@ -1,0 +1,46 @@
+{
+  "name": "openclaw-plugin-transient-tools",
+  "version": "0.1.5",
+  "description": "Keep OpenClaw tool history transient: bounded recent tool context without persistent session transcript bloat.",
+  "type": "module",
+  "main": "./index.js",
+  "files": [
+    "index.js",
+    "core.js",
+    "openclaw.plugin.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "check": "node --check index.js && node --check core.js && npm test && npm pack --dry-run"
+  },
+  "engines": {
+    "node": ">=24.15.0"
+  },
+  "peerDependencies": {
+    "openclaw": ">=2026.7.1 <2026.8.0"
+  },
+  "openclaw": {
+    "extensions": [
+      "./index.js"
+    ],
+    "compat": {
+      "pluginApi": ">=2026.7.1 <2026.8.0",
+      "minGatewayVersion": "2026.7.1"
+    },
+    "build": {
+      "openclawVersion": "2026.7.1",
+      "pluginSdkVersion": "2026.7.1"
+    }
+  },
+  "keywords": [
+    "openclaw",
+    "plugin",
+    "transcript",
+    "tools",
+    "context",
+    "codex"
+  ],
+  "license": "MIT"
+}
